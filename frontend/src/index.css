@@ -1,13 +1,23 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Updated Falling animation: Start visible, fade out */
+@keyframes fall {
+  0% {
+    transform: translateY(-40vh) rotate(0deg);
+    opacity: 1; /* fully visible at the top */
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0; /* fade out while falling */
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.animate-fall {
+  animation: fall 10s linear infinite;
+  position: absolute;
+  font-size: 3rem;
+  pointer-events: none;
+  z-index: 0;
 }
